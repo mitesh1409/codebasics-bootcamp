@@ -26,8 +26,11 @@ Module Status: Completed 🎯
 
 ✅ Python installation  
 ✅ Professional Python project setup  
-✅ Variables, Numbers & Strings — Exercises  
-✅ Quiz & Assignment  
+✅ Variables  
+✅ Numbers  
+✅ Strings  
+✅ Hands on exercises  
+✅ Quiz & Assignment for Variables, Numbers & Strings  
 
 Efforts: 384m
 
@@ -52,8 +55,11 @@ Email: mitesh5.mprajapati@gmail.com
 
 📦 Python  
 
-✅ Lists, If Condition & For, While loops — Exercises  
-✅ Quiz & Assignment  
+✅ Lists  
+✅ If Condition  
+✅ For, While loops  
+✅ Hands on exercises  
+✅ Quiz & Assignment for Lists, If Condition & For, While loops  
 
 Efforts: 320m
 
@@ -82,6 +88,7 @@ Email: mitesh5.mprajapati@gmail.com
 ✅ Dictionaries & Tuples
 ✅ Modules & Pip
 ✅ File Handling  
+✅ Hands on exercises  
 
 Efforts: 270m
 
@@ -106,9 +113,9 @@ Email: mitesh5.mprajapati@gmail.com
 
 📦 Python  
 
-✅ 
+✅ Quiz & Assignment for Functions, Dictionaries & Tuples, Modules & Pip, File Handling  
 
-Efforts: 
+Efforts: 92m
 
 Module Status: Work In-progress 🏃‍♂️
 
@@ -125,3 +132,5 @@ Email: mitesh5.mprajapati@gmail.com
 #DataScience #AIEngineering #GenerativeAI #LearnInPublic #Python #Day1
 
 ---
+
+
