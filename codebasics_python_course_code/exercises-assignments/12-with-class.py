@@ -5,11 +5,12 @@ from datetime import date
 class CricketPlayer:
     game = 'Cricket'
 
-    def __init__(self, first_name, last_name, birth_year):
+    def __init__(self, first_name, last_name, birth_year, team):
         self.first_name = first_name
         self.last_name = last_name
         self.scores = []
         self.birth_year = birth_year
+        self.team = team
 
     def average_score(self):
         if len(self.scores) == 0:
@@ -18,3 +19,18 @@ class CricketPlayer:
 
     def calculate_age(self):
         return date.today().year - self.birth_year
+
+    def add_score(self, score):
+        self.scores.append(score)
+
+    def __str__(self):
+        return f'''
+{self.first_name} {self.last_name}, {self.calculate_age()}, {self.team}
+Average Score: {self.average_score()}
+'''
+
+virat = CricketPlayer('Virat', 'Kohli', 1988, 'India')
+virat.add_score(100)
+virat.add_score(50)
+virat.add_score(150)
+print(virat)
