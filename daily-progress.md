@@ -94,7 +94,7 @@ Efforts: 270m
 
 Module Status: Work In-progress 🏃‍♂️
 
-Not quite happy with today's efforts and progress.  
+Not quite happy with today's progress.  
 Looking forward to come back next day with more energy.  
 
 ---
@@ -119,8 +119,8 @@ Efforts: 92m
 
 Module Status: Work In-progress 🏃‍♂️
 
-Not quite happy with today's efforts and progress.  
-Looking forward to come back next day with more energy.  
+Not enough efforts and progress today.  
+I'll try to cover up tomorrow.  
 
 ---
 
@@ -133,4 +133,92 @@ Email: mitesh5.mprajapati@gmail.com
 
 ---
 
+☀️ Day #5  
+🗓️ Sun 15 Mar 2026  
 
+No efforts today due to some personal commitments.  
+I'll come back tomorrow.  
+
+---
+
+I am committed to show up everyday 🧘  
+Want to join? Let's connect 🤝 😊  
+LinkedIn: https://www.linkedin.com/in/mitesh1409/  
+Email: mitesh5.mprajapati@gmail.com  
+
+#DataScience #AIEngineering #GenerativeAI #LearnInPublic #Python #Day1
+
+---
+
+☀️ Day #6  
+🗓️ Mon 16 Mar 2026  
+
+📦 Python  
+
+✅ Classes & Objects  
+
+Efforts: 56m
+
+Module Status: Work In-progress 🏃‍♂️
+
+Not good. I know that I need to put more efforts.  
+
+---
+
+I am committed to show up everyday 🧘  
+Want to join? Let's connect 🤝 😊  
+LinkedIn: https://www.linkedin.com/in/mitesh1409/  
+Email: mitesh5.mprajapati@gmail.com  
+
+#DataScience #AIEngineering #GenerativeAI #LearnInPublic #Python #Day1
+
+---
+
+☀️ Day #7  
+🗓️ Tue 17 Mar 2026  
+
+📦 Python  
+
+✅ Classes & Objects  
+
+Efforts: 30m
+
+Module Status: Work In-progress 🏃‍♂️
+
+Not good. I know that I need to put more efforts.  
+
+---
+
+I am committed to show up everyday 🧘  
+Want to join? Let's connect 🤝 😊  
+LinkedIn: https://www.linkedin.com/in/mitesh1409/  
+Email: mitesh5.mprajapati@gmail.com  
+
+#DataScience #AIEngineering #GenerativeAI #LearnInPublic #Python #Day1
+
+---
+
+☀️ Day #8  
+🗓️ Wed 17 Mar 2026  
+
+📦 Python  
+
+✅   
+✅   
+✅   
+
+Efforts: 30m
+
+Module Status: Work In-progress 🏃‍♂️
+
+
+---
+
+I am committed to show up everyday 🧘  
+Want to join? Let's connect 🤝 😊  
+LinkedIn: https://www.linkedin.com/in/mitesh1409/  
+Email: mitesh5.mprajapati@gmail.com  
+
+#DataScience #AIEngineering #GenerativeAI #LearnInPublic #Python #Day1
+
+---
