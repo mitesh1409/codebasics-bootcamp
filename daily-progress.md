@@ -443,8 +443,10 @@ I'll come back tomorrow.
 
 **Work Description**  
 
+No efforts today.  
+I'll come back tomorrow.  
 
 **Efforts**  
-
+0m
 
 ---

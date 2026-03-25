@@ -1,4 +1,4 @@
-# Division by zero example
+# Exception handling example
 
 import traceback
 

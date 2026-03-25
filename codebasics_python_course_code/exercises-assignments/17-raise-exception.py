@@ -1,3 +1,5 @@
+# Throw/raise exceptions example
+
 class InsufficientFunds(Exception):
     pass
 
@@ -7,7 +9,7 @@ def deposit(amount):
     global balance
 
     if amount <= 0:
-        raise ValueError("Amount must be positive")
+        raise ValueError("Deposit amount must be positive")
 
     balance += amount
 
@@ -15,10 +17,10 @@ def withdraw(amount):
     global balance
 
     if amount <= 0:
-        raise ValueError("Amount must be positive")
+        raise ValueError("Withdrawal amount must be positive")
 
     if amount > balance:
-        raise InsufficientFunds("Amount more than the balance")
+        raise InsufficientFunds("Withdrawal amount can't be more than the balance")
 
     balance -= amount
 
