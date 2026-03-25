@@ -1,16 +1,5 @@
 # Todos
 
-#1
-Prepare a post for Day #1 of Learning in Public
+Explore the following topics:
 
-#2
-Python setup on Mac
-
-#3
-Python Basics: Variables, Numbers & Strings
-
-#4
-Python Basics: Lists, If Condition & For loop
-
-#5
-Blog post => Python professional environment setup
+1. Numpy Arrays vs Python Lists

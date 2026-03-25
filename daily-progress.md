@@ -367,18 +367,6 @@ Status: WIP
 
 ---
 
-## Day #8 - Wed 18 Mar 2026  
-
-**Work Description**  
-
-No efforts today.  
-I'll come back tomorrow.  
-
-**Efforts**  
-0m
-
----
-
 ## Day #9 - Thu 19 Mar 2026  
 
 **Work Description**  
@@ -450,3 +438,22 @@ I'll come back tomorrow.
 0m
 
 ---
+
+## Day #15 - Wed 25 Mar 2026
+
+**Work Description**
+
+Module #2 - Python:  
+
+* __main__ function
+* Quiz & Assignment for Classes & Exception Handling  
+* NumPy - introduction and benefits
+* NumPy - Basic operations
+
+Status: WIP
+
+**Efforts**
+280m
+
+---
+
