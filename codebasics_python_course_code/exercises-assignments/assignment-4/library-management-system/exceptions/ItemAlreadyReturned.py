@@ -1,0 +1,2 @@
+class ItemAlreadyReturned(Exception):
+    pass

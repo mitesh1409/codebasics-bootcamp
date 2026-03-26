@@ -441,19 +441,36 @@ I'll come back tomorrow.
 
 ## Day #15 - Wed 25 Mar 2026
 
-**Work Description**
+**Work Description**  
 
 Module #2 - Python:  
 
-* __main__ function
+* `__main__` function
 * Quiz & Assignment for Classes & Exception Handling  
 * NumPy - introduction and benefits
 * NumPy - Basic operations
 
 Status: WIP
 
-**Efforts**
+**Efforts**  
 280m
 
 ---
 
+## Day #16 - Thu 26 Mar 2026
+
+**Work Description**  
+
+Module #2 - Python:  
+
+* NumPy Matrix operations
+* NumPy Slicing, Stacking operations
+* Quiz & Assignment for NumPy
+* Pandas - Intro and Installation
+
+Status: WIP
+
+**Efforts**  
+247m
+
+---
