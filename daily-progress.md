@@ -474,3 +474,20 @@ Status: WIP
 247m
 
 ---
+
+## Day #17 - Fri 27 Mar 2026
+
+**Work Description**  
+
+Module #2 - Python:  
+
+* Dataframe basics
+* Read, Write Excel and CSV files
+
+Status: WIP
+
+**Efforts**  
+131m
+
+---
+

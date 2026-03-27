@@ -1,4 +1,5 @@
 # Movie data analysis using Python only
+
 import csv
 
 def rating_stats(ratings):
