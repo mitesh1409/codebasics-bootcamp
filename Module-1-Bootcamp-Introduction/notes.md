@@ -51,6 +51,12 @@ https://www.kaggle.com/competitions
 * Stakeholder Management
 * Online Credibility (showcasing your work/profile on GitHub, LinkedIn, X etc.)
 
+## The Metamorphosis Stage
+
+* Contribute to Open-Source Software
+* Learn the art of building online credibility
+* Build real world products & libraries
+
 ## Learn in Public & Build in Public
 
 * Learn in Public - post your journey on LinkedIn, X etc.
