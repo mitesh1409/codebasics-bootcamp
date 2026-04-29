@@ -44,3 +44,13 @@ print(bar)
 # foo and bar store the same reference
 id(foo)
 id(bar)
+
+bar = 'Samosa'
+print(bar)
+id(bar)
+
+print(foo)
+print(bar)
+
+id(foo)
+id(bar)
