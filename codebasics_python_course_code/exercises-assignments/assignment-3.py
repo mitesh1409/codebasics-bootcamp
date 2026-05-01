@@ -5,7 +5,7 @@
 # You are given a file called customers.txt that contains the name of the customer and total amount they spent.
 # Read this file line by line and save the customer name and total amount in a dictionary.
 # 
-# For example, customers.txt file will content the data in the following format,
+# For example, customers.txt file will contain the data in the following format,
 # 
 # Srinivas,120
 # John,250
@@ -42,11 +42,13 @@ print(customers)
 # 3. Gold: Total purchases $500+
 
 def calculate_rewards(spent_amount):
-    if spent_amount <= 199:
-        return 'Bronze'
-    if spent_amount <= 499:
+    if spent_amount >= 500:
+        return 'Gold'
+    if spent_amount >= 200:
         return 'Silver'
-    return 'Gold'
+    if spent_amount >= 100:
+        return 'Bronze'
+    return None
 
 # Task 3
 # 
@@ -74,11 +76,13 @@ print(customers_summary)
 #     # return customer_summary dict
 
 def calculate_rewards(spent_amount):
-    if spent_amount <= 199:
-        return 'Bronze'
-    if spent_amount <= 499:
+    if spent_amount >= 500:
+        return 'Gold'
+    if spent_amount >= 200:
         return 'Silver'
-    return 'Gold'
+    if spent_amount >= 100:
+        return 'Bronze'
+    return None
 
 def process_customer_data(file_name):
     customers_summary = {}
