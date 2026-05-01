@@ -2,7 +2,7 @@
 
 ## #1 How does the continue statement affect a for loop in Python?
 
-It skips the current iteration and proceeds to the next iteration
+It skips the statements coming after the "continue" in the current iteration and proceeds/continues with the next iteration in the loop.
 
 ## #2 What happens when you try to remove an element that is not present in the list using remove()?
 
