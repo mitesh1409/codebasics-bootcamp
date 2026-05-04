@@ -2,12 +2,25 @@
 
 Mar 7 2026  
 
-## Entire AI family tree
+Topics
+
+1. The Entire AI Family Tree
+2. Traditional AI Vs Generative/Agentic AI
+3. AI Engineer Categories
+4. Study/Explore AI Engineer Job Posts
+5. The Mindset Shift
+6. Why Python is Popular in AI World?
+
+---
+
+## #1 The Entire AI Family Tree
 
 AI (Artificial Intelligence)  
+
 ML (Machine Learning) is part of AI.
 
 In ML (Machine Learning), there are two sub-domains:  
+
 * Statistical ML
   Algorithms like:  
   - Linear Regression
@@ -34,12 +47,13 @@ Transformer Architecture is the base of LLMs.
 
 ---
 
-## Traditional AI Vs Generative/Agentic AI
+## #2 Traditional AI Vs Generative/Agentic AI
 
 Traditional AI  
-Not generative in nature.  
+It is not generative in nature.  
 
 Examples:  
+
 * Spam Classification
 * Image Classification
 * Home Price Prediction
@@ -47,12 +61,13 @@ Examples:
 Generative AI/Agentic AI
 
 Examples:  
+
 * LLMs like ChatGPT, Gemini
 * Claude Code
 
 ---
 
-## AI Engineer Categories
+## #3 AI Engineer Categories
 
 1. Integrator
     Software Engineer who can integrate AI into existing application.
@@ -73,17 +88,18 @@ Examples:
 
 ---
 
-## Study/Explore AI Engineer Job Posts
+## #4 Study/Explore AI Engineer Job Posts
 
 Study/Explore AI Engineer Job Posts to get idea about the company/employer expectations/job description.  
 
 ---
 
-## The Mindset Shift
+## #5 The Mindset Shift
 
 Today or tomorrow you have to accept that it is the end of the era for writing code by hand.  
 
 Developer's job is evolved -  
+
 * generate code with the help of Gen AI
 * act as an orchestrator
 * review generated code quality
@@ -109,14 +125,13 @@ Posted on X by @karpathy
 
 ---
 
-## Why Python is popular in AI world?
+## #6 Why Python is Popular in AI World?
 
 Python is more English like language.  
 
-Install the following:  
-* Python
-* VS Code
-* uv
+[Python Package Index](https://pypi.org/)
+
+---
 
 ## Todos/Exercises
 
@@ -124,6 +139,7 @@ Install the following:
 Setup Python development environment.
 
 Install the following:  
+
 * Python
 * VS Code
 * uv
@@ -177,6 +193,12 @@ Useful in static analysis of the code.
 Create a simple program which calls a function to calculate market cap of a company.  
 Display the output.  
 Market cap = number of outstanding shares X current market price of a share
+
+#N
+Documenting functions in Python.
+
+#N
+Commenting in Python.
 
 #10  
 Convert the program written in task #5 to OOP style.  
@@ -232,6 +254,8 @@ Here the code which calculates execution time is getting repeated.
 
 How can decorators help here?
 
+Decorator = Accessory
+
 #12  
 Groq LLM
 
@@ -274,12 +298,10 @@ JOKES = [
 ]
 
 @app.get("/joke")
-
 def get_joke():
   return {
     "joke": choice(JOKES)
   }
-
 ```
 
 Run this server from the app directory.
