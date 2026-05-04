@@ -323,7 +323,9 @@ We will LLM a topic to generate a joke.
 Complext tasks -> use Thinking model
 Simple tasks -> use Simple model
 
-## Quiz
+---
+
+## Quizzes
 
 Quiz #1  
 What is the purpose of the following line in a Python file?  
