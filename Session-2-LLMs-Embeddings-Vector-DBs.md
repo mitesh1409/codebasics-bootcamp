@@ -135,13 +135,17 @@ LLM can process text, image, audio etc. type of data.
 
 Internally LLM uses conditional probability for that.  
 
-For example
+Probability is measured on a scale of 0(lowest) to 1(highest).  
+P("food" | "I am hungry, I need...") = 0.9 (most likely)  
+P("camera" | "I am hungry, I need...") = 0.01 (highly unlikely)  
 
+Example #1  
 Input:  
 Roses are red...  
 Output:  
 Violets are blue... (higher probability of getting this)
 
+Example #2  
 Input:  
 I am feeling hungry, I need...  
 Output:  
