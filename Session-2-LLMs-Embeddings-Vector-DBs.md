@@ -2,7 +2,15 @@
 
 Mar 8 2026  
 
-## Generative AI
+Topics
+
+1. Generative AI
+7. Todos/Exercises
+8. Quizzes
+
+---
+
+## #1 Generative AI
 
 Generative AI is a type of artificial intelligence that creates new content -  
 such as text, images or audio - based on patterns learned from existing data.  
@@ -15,6 +23,9 @@ Sonnet 4.6 -> LLM
 
 LLM is the brain.  
 Application is the body which needs a brain.  
+
+LLMs are trained on vast amount of data (source: internet or other?),  
+then they do a reinforcement learning with human feedback RLHF.
 
 So as an AI engineer we will build applications that will use LLM as their brain.  
 
