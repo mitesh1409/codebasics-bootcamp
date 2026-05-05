@@ -465,6 +465,23 @@ Embeddings group together similar things.
 
 Embeddings are stored as vectors in Vector Database.  
 
+OLTP Databases  
+OLTP = Online Transaction Processing
+Examples are - MySQL, PostgreSQL, MongoDB  
+How data is stored?  
+rows, columns
+
+OLAP Databases  
+OLAP = Online Analytical Processing  
+Examples are - ClickHouse, Snowflake, Databricks, Apache Druid  
+How data is stored?  
+rows, columns
+
+Vector Databases  
+A vector database is a specialized system for storing, managing, and searching high-dimensional vector embeddings, allowing for semantic similarity search rather than exact keyword matches. By utilizing algorithms like Approximate Nearest Neighbor (ANN) (e.g., HNSW), they enable fast retrieval of unstructured data (text, images, audio) based on meaning.  
+Examples are - Pinecone, Milvus, Chroma, Qdrant
+How data is stored?  
+id, vector and payload
 
 ---
 
