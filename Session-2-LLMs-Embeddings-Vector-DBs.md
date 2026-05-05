@@ -12,6 +12,8 @@ Topics
 6. What exactly are LLMs?
 7. Transformers
 8. Key Parameters
+9. What Exactly is a Token?
+10. Vector Databases
 
 7. Todos/Exercises
 8. Quizzes
@@ -248,8 +250,221 @@ When to Use What
 - Use **mid temperature** for: chatbots, summarization
 - Use **high temperature** for: brainstorming, creative writing (with caution)
 
-* Top-p & Top-k
-* Output Length
+**Top-p (nucleus sampling)**  
+
+Top-P is another parameter that controls the **randomness of the model's output**, but it works differently from temperature.
+
+How it Works  
+
+Instead of scaling probabilities (like temperature), Top-P **limits the pool of words** the model can choose from.
+
+- The model ranks all possible next words by probability
+- It then picks the **smallest group of top words** whose combined probability adds up to **P**
+- It only samples from that group
+
+Example  
+
+Say the next word probabilities are:
+
+| Word | Probability |
+|---|---|
+| coffee | 40% |
+| courage | 25% |
+| dreams | 20% |
+| stars | 10% |
+| chaos | 5% |
+
+- At **Top-P = 0.85** → model considers {coffee, courage, dreams} (40+25+20 = 85%) and ignores the rest
+- At **Top-P = 1.0** → model considers **all words** (no filtering)
+- At **Top-P = 0.4** → model only considers {coffee} (very deterministic)
+
+Top-p vs Temperature  
+
+| | Temperature | Top-p |
+|---|---|---|
+| **Controls** | How sharp/flat the probability curve is | How many words are in the candidate pool |
+| **Low value** | More deterministic | Fewer word choices |
+| **High value** | More creative/random | More word choices |
+
+On Claude's API  
+
+```python
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    top_p=0.9,  # 👈 Set it here (0.0 to 1.0)
+    messages=[
+        {"role": "user", "content": "Your prompt here"}
+    ]
+)
+```
+
+> **💡 Tip:** Anthropic generally recommends using **either** temperature **or** Top-P, not both together, as combining them can produce unpredictable behavior.
+
+**Top-k**  
+
+Top-k is similar to Top-p but even simpler — it limits the word pool to a **fixed number of top candidates**, regardless of their probabilities.
+
+How it Works  
+
+- The model ranks all possible next words by probability
+- It only considers the **top K words** and samples from those
+- Everything outside the top K is ignored completely
+
+Example  
+
+Using the same word probabilities:
+
+| Word | Probability |
+|---|---|
+| coffee | 40% |
+| courage | 25% |
+| dreams | 20% |
+| stars | 10% |
+| chaos | 5% |
+
+- At **K = 3** → model only considers {coffee, courage, dreams} — always exactly 3 words
+- At **K = 1** → model always picks {coffee} — completely deterministic (like greedy decoding)
+- At **K = 5** → model considers all 5 words
+
+Top-k vs Top-p vs Temperature  
+
+| | Temperature | Top-p | Top-k |
+|---|---|---|---|
+| **Controls** | Sharpness of probability curve | Cumulative probability threshold | Fixed number of candidates |
+| **Low value** | Deterministic | Fewer words | Fewer words |
+| **High value** | Creative/random | More words | More words |
+| **Pool size** | All words (scaled) | Varies dynamically | Always fixed |
+
+The key difference from Top-p is that **Top-k is rigid** — it always picks exactly K words, even if the probability gap between word K and K+1 is huge.
+
+On Claude's API  
+
+```python
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,
+    top_k=40,  # 👈 Set it here
+    messages=[
+        {"role": "user", "content": "Your prompt here"}
+    ]
+)
+```
+
+> **💡 Note:** Anthropic recommends using only **one** sampling parameter at a time — pick whichever suits your use case and leave the others at default.
+
+Top-p  
+For creative, diverse tasks  
+Examples - Chatbots, Storytelling  
+
+Top-k  
+For predictable, structured tasks  
+Examples - Writing Code, Summarization  
+
+**Output Length**  
+
+Output Length is a parameter, commonly called **`max_tokens`**.
+
+What is a Token?  
+
+Before diving in, it helps to understand tokens:
+
+- A token ≈ **~¾ of a word** on average
+- "A cup of coffee" ≈ **4 tokens**
+- 1000 tokens ≈ **750 words**
+
+How `max_tokens` Works  
+
+It simply sets a **hard cap** on how many tokens the model can generate in its response. The model stops generating once it hits this limit — even mid-sentence.
+
+On Claude's API  
+
+```python
+response = client.messages.create(
+    model="claude-sonnet-4-20250514",
+    max_tokens=1024,  # 👈 This one — you've already been setting it!
+    messages=[
+        {"role": "user", "content": "Your prompt here"}
+    ]
+)
+```
+
+Practical Guidelines  
+
+| Use Case | Recommended `max_tokens` |
+|---|---|
+| Short Q&A / classification | 100–300 |
+| Summarization | 300–600 |
+| Chatbot responses | 500–1000 |
+| Long-form writing / reports | 2000–4000 |
+| Complex reasoning / agents | 4000+ |
+
+Important Notes  
+
+- It is a **maximum**, not a target — the model can stop earlier if it finishes naturally
+- Setting it **too low** can cut off responses abruptly
+- Claude's maximum allowed `max_tokens` depends on the model — for Claude Sonnet 4 it is **8192 tokens**
+- More tokens = **higher API cost**, so set it appropriately for your use case
+
+---
+
+## #9 What Exactly is a Token?
+
+Tokenization is based on **subword units**, not whole words. Here's how it actually works:
+
+| Text | Tokens | Count |
+|---|---|---|
+| "cat" | ["cat"] | 1 token |
+| "coffee" | ["coff", "ee"] | 2 tokens |
+| "unbelievable" | ["un", "belie", "vable"] | 3 tokens |
+| "internationalization" | ["int", "ern", "ation", "al", "ization"] | 5 tokens |
+| "A cup of coffee" | ["A", "cup", "of", "coff", "ee"] | 5 tokens |
+
+So yes — **long words get split into multiple tokens**, and a token is roughly **3–4 characters** as you suspected.
+
+Simple Rules of Thumb  
+
+- Short common words → usually **1 token** ("the", "cat", "run")
+- Long or rare words → **split into multiple tokens**
+- Punctuation & spaces → often their **own token**
+- Numbers like "12345" → can be **split digit by digit**
+
+Why does this matter?  
+
+```python
+# This prompt might look short but could use many tokens
+# if it contains long/technical/rare words
+max_tokens=100  # might cut off sooner than you expect
+```
+
+Best Way to Check  
+
+Anthropic has an official tokenizer tool you can use to see exactly how any text gets tokenized:
+
+👉 [https://claude-tokenizer.vercel.app/](https://claude-tokenizer.vercel.app/)
+
+Paste any text there and it will show you the exact token breakdown visually.
+
+---
+
+## #10 Vector Databases
+
+When you search  
+"Calories in apple"  
+"Revenue of apple"  
+
+apple word is common but search results are different and relevant.  
+
+> Embeddings are used for semantic search
+
+Word Embedding  
+Sentence Embedding  
+Document Embedding  
+
+Embeddings group together similar things.  
+
+Embeddings are stored as vectors in Vector Database.  
+
 
 ---
 
