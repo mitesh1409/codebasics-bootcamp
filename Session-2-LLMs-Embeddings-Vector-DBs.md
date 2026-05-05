@@ -5,6 +5,11 @@ Mar 8 2026
 Topics
 
 1. Generative AI
+2. AI Agent
+3. Software 1.0 Software 2.0 Software 3.0
+4. Follow Andrej Karpathy
+5. Gen AI (LLM only) Vs AI Agent Vs Agentic AI
+
 7. Todos/Exercises
 8. Quizzes
 
@@ -29,17 +34,82 @@ then they do a reinforcement learning with human feedback RLHF.
 
 So as an AI engineer we will build applications that will use LLM as their brain.  
 
-## AI Agent
+---
 
-AI Agent is a program that takes input, thinks and acts to complete a task using  
-tools, memory and knowledge.  
+## #2 AI Agent
+
+**AI Agent**  
+
+AI Agent is a program that takes input, thinks and acts to complete a task  
+using tools, memory and knowledge.  
 
 AI Agent = LLM + Tools + Knowledge + Memory
 
 AI Agents are autonomous but narrow, task specific and does not span multiple or evolving goals.  
 
+**Agentic AI**  
+
 Agentic AI is a system where one or more AI agents work autonomously,  
 often over long tasks, making decisions, using tools and even other agents to reach a goal.
+
+Agentic AI is a system with one or more AI agents, these agents interact with each other  
+and they try to accomplish a complex goal by doing a multi-step reasoning and multi-step planning.
+
+Examples:  
+
+* Flight booking AI agent
+    Tools = AccuWeather API, Expedia platform  
+    Knowledge = Database  
+    Example Usage:  
+    Book a flight for my 7 day trip from New York to New Delhi in May 2026.  
+    The weather should be sunny all day.  
+    My budget is up to 1600$.  
+    And no layovers.  
+* Immigration AI agent
+    Knowledge = Passport, ID documents, Database etc.  
+    Example Usage:  
+    Process my VISA.
+
+LLM has a reasoning power, traditional program does not have that capability.  
+And it makes the real difference.  
+
+When a user gives instructions like this:  
+> Book a flight for my 7 day trip from New York to New Delhi in May 2026.  
+> The weather should be sunny all day.  
+> My budget is up to 1600$.  
+> And no layovers.  
+
+The traditional program won't be able to process this but LLM can extract key information  
+from this and can complete the task.  
+
+> An LLM is like a human brain.
+
+---
+
+## #3 Software 1.0 Software 2.0 Software 3.0
+
+[Karpathy's 3 Software Paradigms Expanded](https://kanaka.github.io/blog/karpathy-software-paradigms-expanded/)
+
+---
+
+## #4 Follow Andrej Karpathy
+
+* [Andrej Karpathy | YouTube](https://www.youtube.com/@AndrejKarpathy)
+* [Andrej Karpathy | X](https://x.com/karpathy)
+
+---
+
+## #5 Gen AI (LLM only) Vs AI Agent Vs Agentic AI
+
+Here's the markdown table extracted from the screenshot:
+
+| System Type | Gen AI (LLM-only) | AI Agent | Agentic AI |
+|---|---|---|---|
+| **Task Capability** | Answers based on pre-trained knowledge only | Takes input, decides, and completes a task | Handles multi-step goals with planning and coordination |
+| **Tool Usage** | ❌ No external tools | Uses tools to complete a task | Uses multiple tools, may call other agents |
+| **Autonomous Decisions** | ❌ No decision-making | ✅ Makes decisions to complete the task | ✅ Plans, decides, and adapts over time |
+
+---
 
 ## LLM
 
