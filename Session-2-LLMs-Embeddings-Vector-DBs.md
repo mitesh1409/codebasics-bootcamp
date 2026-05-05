@@ -10,6 +10,8 @@ Topics
 4. Follow Andrej Karpathy
 5. Gen AI (LLM only) Vs AI Agent Vs Agentic AI
 6. What exactly are LLMs?
+7. Transformers
+8. Key Parameters
 
 7. Todos/Exercises
 8. Quizzes
@@ -154,18 +156,32 @@ OR
 something to eat  
 etc. (higher probability of getting this)
 
+> LLM is a kind of a neural network.
+> Neural Networks → Deep Learning → Transformers → LLMs
+> LLMs are based on Transformers architecture.
 
-Google's Word2Vec
+---
 
+## #7 Transformers
 
-Transformer Explainer  
+Reference:  
+[How Transformers Work: A Detailed Exploration of Transformer Architecture](https://www.datacamp.com/tutorial/how-transformers-work)
 
+**Word Embeddings**  
+Word Embedding is a way to represent text in numeric format such that  
+it can capture its meaning.  
+
+**Google's Word2Vec**  
+[Google Word2Vec](https://www.kaggle.com/datasets/sugataghosh/google-word2vec)
+
+**Transformer Explainer**  
 https://github.com/poloclub/transformer-explainer
 
 https://poloclub.github.io/transformer-explainer/
 
+---
 
-## Key Parameters
+## #8 Key Parameters
 
 Key Parameters
 
@@ -174,18 +190,70 @@ Key Parameters
 * Top-p & Top-k
 * Output Length
 
-Context Window  
+**Context Window**  
 Maximum number of tokens that can be passed at a time for inference.  
+This will be your working memory.  
 
-Prompt:  
+Thinking tokens are also a part of the Context Window.
+
+Input, output and thinking tokens of a current chat are part of the Context Window.  
+They all are counted in the Context Window.  
+
+The LLM will use the attention mechanism to make sense out of that context.  
+It will create the contextual embedding and do the next token prediction based on it.  
+
+There is a saying in the AI Engineering:  
+> Context is the king.
+> Always maintain a clean context.
+
+Example Prompt:  
 teach me a philosophy of non-attachment  
 
 Total number of tokens = 7  
 Context utilized = 7  
 
+**Temperature**  
+Temperature controls how "random" or "creative" the model's output will be.  
 
+The concept of temperature in Physics  
+When the temperature of a matter increases it expands,  
+and when it decreases it shrinks.  
+For example, water gets boiled and converted into vapour (expands) when its temperature  
+reaches to 100 celcius or more, and it is converted into ice (shrinks) when its temperature  
+reaches to 0 celcius or below.  
 
-## Quiz
+AI/ML researchers are mostly from Maths/Physics background, so they borrowed  
+a lot of concepts from Maths/Physics.
+
+LLM models are focused at a lower temperature,  
+they become creative at a higher temperature, sometimes even gibberish.
+
+LLM Temperature Parameter is a parameter that controls the randomness/creativity of an LLM's output, ranging from **0 to 2**.
+
+| Temperature | Behavior | Probability Distribution | Example Output |
+|---|---|---|---|
+| **Low (→ 0)** | Deterministic & predictable | Sharp curve — high-probability words dominate | "A cup of **coffee**." |
+| **Mid (~1)** | More creative, considers lower-probability words | Moderate spread across options | "A cup of **courage**." |
+| **High (→ 2)** | Unpredictable, chaotic | Uniform/flat distribution → confusion & unexpected outputs | "A cup of **stars**." |
+
+Key Takeaways  
+
+- At **low temperature**, the model almost always picks the most probable next word — great for factual, consistent tasks.
+- At **mid temperature**, the model balances creativity and coherence — good for general use.
+- At **high temperature**, probability gets spread nearly equally across all words, leading to surprising or even nonsensical outputs.
+
+When to Use What  
+
+- Use **low temperature** for: code generation, data extraction, Q&A
+- Use **mid temperature** for: chatbots, summarization
+- Use **high temperature** for: brainstorming, creative writing (with caution)
+
+* Top-p & Top-k
+* Output Length
+
+---
+
+## Quizzes
 
 Quiz #1  
 What is the core mechanism that makes transformer models so effective for language tasks?  
@@ -225,7 +293,6 @@ Encoder and Decoder
 
 Quiz #7  
 
-
 Answer:  
 
 Quiz #8  
@@ -235,3 +302,8 @@ Answer:
 Quiz #9  
 
 Answer:  
+
+---
+
+**inference**  
+An inference is a logical conclusion or "educated guess" made by combining evidence, observations, or clues with your own background knowledge. It is the process of figuring out something that is not directly stated, acting as a bridge between known facts and new understanding.
