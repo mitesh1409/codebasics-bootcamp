@@ -10,6 +10,8 @@ Topics
 4. Study/Explore AI Engineer Job Posts
 5. The Mindset Shift
 6. Why Python is Popular in AI World?
+7. Todos/Exercises
+8. Quizzes
 
 ---
 
