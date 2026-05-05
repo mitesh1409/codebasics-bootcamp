@@ -9,6 +9,7 @@ Topics
 3. Software 1.0 Software 2.0 Software 3.0
 4. Follow Andrej Karpathy
 5. Gen AI (LLM only) Vs AI Agent Vs Agentic AI
+6. What exactly are LLMs?
 
 7. Todos/Exercises
 8. Quizzes
@@ -111,10 +112,44 @@ Here's the markdown table extracted from the screenshot:
 
 ---
 
-## LLM
+## #6 What exactly are LLMs?
+
+LLMs = Large Language Models
 
 Language Modeling  
 A language model is a probability distribution over a sequence of tokens (words/sub-words).
+
+A language model is a probability distribution that tells you that  
+given a certain sequence of tokens, what could be the probability that  
+the next token is X or Y.
+
+For example, try giving this input - "Roses are red..." to a Gen AI (ChatGPT, Claude, Gemini etc.) and observe the output.  
+
+LLMs are trained on vast amount of data (source: internet or other?),  
+then they do a reinforcement learning with human feedback RLHF.
+
+So when you give a sequence of text to an LLM it can predict the next tokens and  
+will ultimately able to complete the sentence meaningfully.  
+
+LLM can process text, image, audio etc. type of data.  
+
+Internally LLM uses conditional probability for that.  
+
+For example
+
+Input:  
+Roses are red...  
+Output:  
+Violets are blue... (higher probability of getting this)
+
+Input:  
+I am feeling hungry, I need...  
+Output:  
+foo  
+OR  
+something to eat  
+etc. (higher probability of getting this)
+
 
 Google's Word2Vec
 
