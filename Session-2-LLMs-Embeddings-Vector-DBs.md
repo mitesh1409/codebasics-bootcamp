@@ -483,6 +483,9 @@ Examples are - Pinecone, Milvus, Chroma, Qdrant
 How data is stored?  
 id, vector and payload
 
+References:  
+* [What is a Vector Database?](https://qdrant.tech/articles/what-is-a-vector-database/)
+
 ---
 
 ## Quizzes
