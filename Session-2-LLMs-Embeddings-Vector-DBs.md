@@ -486,9 +486,242 @@ id, vector and payload
 References:  
 * [What is a Vector Database?](https://qdrant.tech/articles/what-is-a-vector-database/)
 
+
 ---
 
-## Quizzes
+## #11 Todos/Exercises
+
+#1  
+Qdrant Hands-on
+
+Install Qdrant using Docker
+
+Initialise a demo app using `uv init`.
+
+Install Qdrant Python Client.  
+
+`uv init`  
+`uv venv`  
+`.\.venv\Scripts\activate`  
+Install Python Dotenv package.  
+Install Qdrant Python Client package.  
+Install Sentence Transformer package.
+
+What we are doing?  
+Setup a local vector database.  
+Then this vector database will store the embeddings.  
+For embeddings we can use different models - like BERT, Da Vinci from OpenAI etc.  
+And then we can do semantic search on this vector database.  
+
+Create a collection in the vector database.
+
+```python
+from qdrant_client import QdrantClient, models
+from sentence_transformers import SentenceTransformer
+from dotenv import load_dotenv
+
+load_dotenv()
+
+qdrant_client = QdrantClient(host="localhost", port=6333)
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+DIMENSION = model.get_sentence_embedding_dimension()
+
+print(DIMENSION)
+
+def create_collection(name: str, distance: models.Distance):
+    if client.collection_exists(collection_name=name):
+        print(f'Collection {name} already exists.')
+        return
+
+    client.create_collection(
+        collection_name=name,
+        vectors_config=models.VectorParams(
+            size=DIMENSION,
+            distance=distance
+        )
+    )
+    print(f'Collection {name} created successfully.')
+```
+
+Create collection in a very idempotent way,  
+that means if a collection already exists then don't  
+try to create it. It should not change the existing state.  
+
+Perform CRUD operations.
+
+Create and read a vector.
+
+```python
+from qdrant_client import QdrantClient, models
+from sentence_transformers import SentenceTransformer
+from dotenv import load_dotenv
+
+load_dotenv()
+
+client = QdrantClient(host="localhost", port=6333)
+model = SentenceTransformer("all-MiniLM-L6-v2")
+
+new_text   = "Elephants are the largest land animals on Earth."
+new_vector = model.encode(new_text).tolist()
+
+print(new_vector)
+
+#CREATE
+client.upsert(
+    collection_name="my_collection",
+    points=[
+        models.PointStruct(
+            id      = 0,
+            vector  = new_vector,
+            payload = {"text": new_text, "category": "animal", "role": "public"}
+        )
+    ]
+)
+
+print("Point 0 inserted.")
+
+#READ
+point = client.retrieve(
+    collection_name="my_collection",
+    ids=[0],
+    with_payload=True,
+    with_vectors=True
+)
+print(point)
+```
+
+Storing multiple points/vectors into the vector database.
+Then perform semantic search.
+Then filtering by exact match.
+
+```python
+# Sample Documents
+documents = [
+    {"id": 1, "text": "Dogs are loyal and friendly domestic animals.",
+     "category": "animal", "role": "public"},
+
+    {"id": 2, "text": "Cats are independent and curious creatures.",
+     "category": "animal", "role": "public"},
+
+    {"id": 3, "text": "Quantum computing uses qubits to perform complex calculations.",
+     "category": "technology", "role": "admin"},
+
+    {"id": 4, "text": "Machine learning enables computers to learn from data.",
+     "category": "technology", "role": "public"},
+
+    {"id": 5, "text": "The Milky Way galaxy contains over 200 billion stars.",
+     "category": "science", "role": "public"},
+
+    {"id": 6, "text": "Nuclear fusion is the process powering the sun.",
+     "category": "science", "role": "public"},
+]
+
+texts = [doc['text'] for doc in documents]
+vectors = model.encode(texts)
+
+# Creating Points with Payload (Qdrant's Datastructure)
+points = [
+    models.PointStruct(
+        id      = doc["id"],
+        vector  = vectors[i].tolist(),
+        payload = {
+            "text"    : doc["text"],
+            "category": doc["category"],
+            "role"    : doc["role"],
+        }
+    )
+    for i, doc in enumerate(documents)
+]
+
+operation_info = client.upsert(
+    collection_name="my_collection",
+    wait=True,
+    points=points
+)
+
+print(f'Status: {operation_info.status}')
+
+# Performing Semantic Search
+query = "What animals make good pets?"
+query_vector = model.encode(query).tolist()
+
+results = client.query_points(
+    collection_name="my_collection",
+    query=query_vector,
+    limit=3,
+    #score_threshold=0.35
+)
+
+if not len(results.points):
+    print('No results found')
+
+for r in results.points:
+    print(f"Score: {r.score:.4f} | {r.payload['text']}")
+
+# Filtering by exact match
+results = client.query_points(
+    collection_name="my_collection",
+    query=model.encode("computers and learning").tolist(),
+    query_filter=Filter(
+        must=[
+            FieldCondition(
+                key="category",
+                match=MatchValue(value="technology")
+            ),
+        ]
+    )
+    limit=3
+)
+
+if not len(results.points):
+    print('No results found')
+
+for r in results.points:
+    print(f"Score: {r.score:.4f} | {r.payload['text'][:60]}")
+
+# Filtering with multiple conditions
+# must = AND, should = OR, must_not = NOT
+results = client.query_points(
+    collection_name="my_collection",
+    query=model.encode("astronomy and stars").tolist(),
+    query_filter=Filter(
+        must=[
+            FieldCondition(
+                key="category",
+                match=MatchValue(value="science")
+            ),
+            FieldCondition(
+                key="category",
+                match=MatchValue(value="science")
+            ),
+        ]
+    )
+    limit=3
+)
+
+# Filtering points without query
+# we can use scroll() to iterate through points without the need of a query
+
+results, next_page_offset = client.scroll(
+    collection_name="my_collection",
+    scroll_filter=Filter(
+        must=[FieldCondition(key="category", match=MatchValue(value="animal"))]
+    ),
+    limit=10,
+    with_payload=True,
+    with_vectors=False
+)
+
+print(f"Found {len(results)} animal points:")
+
+for r in results:
+    print(f"ID: {r.id}: {r.payload['text'][:50]}")
+```
+
+---
+
+## #12 Quizzes
 
 Quiz #1  
 What is the core mechanism that makes transformer models so effective for language tasks?  
@@ -527,16 +760,38 @@ Answer:
 Encoder and Decoder
 
 Quiz #7  
+Word2Vec generates static embeddings. Which type of models generate contextual embeddings?
 
 Answer:  
+Transformer based models (e.g., BERT, GPT)
 
 Quiz #8  
+You want your LLM to produce deterministic, consistent output every time.  
+What "temperature" value should you set?
 
 Answer:  
+A low value close to 0
 
 Quiz #9  
+What is a model's "context window"?
 
 Answer:  
+The maximum number of tokens the model can process in a single input + output
+
+Quiz #10  
+Why are traditional relational databases unsuitable for vector similarity search  
+at scale?
+
+Answer:  
+They lack specialized indexing algorithms (like HNSW) for efficient nearest  
+neighbour search
+
+Quiz #11  
+Why do we "chunk" large documents before embedding them?
+
+Answer:  
+Because embedding models have a maximum input token limit,  
+and smaller chunks capture more focused meaning.
 
 ---
 

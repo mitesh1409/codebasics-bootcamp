@@ -135,7 +135,7 @@ Python is more English like language.
 
 ---
 
-## Todos/Exercises
+## #7 Todos/Exercises
 
 #1  
 Setup Python development environment.
@@ -327,7 +327,7 @@ Simple tasks -> use Simple model
 
 ---
 
-## Quizzes
+## #8 Quizzes
 
 Quiz #1  
 What is the purpose of the following line in a Python file?  
