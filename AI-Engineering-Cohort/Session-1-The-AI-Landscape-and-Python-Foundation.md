@@ -137,39 +137,20 @@ Python is more English like language.
 
 ## #7 Todos/Exercises
 
-#1  
-Setup Python development environment.
+### Exercise #1 - Setup Python development environment
 
-Install the following:  
+### Exercise #2 - Explore uv (Python package and project manager)
 
-* Python
-* VS Code
-* uv
+An extremely fast Python package and project manager, written in Rust.
 
-#2  
 * [Python UV: The Ultimate Guide to the Fastest Python Package Manager](https://www.datacamp.com/tutorial/python-uv)
 * [uv](https://docs.astral.sh/uv/)
 
-#3
-Create a sample project using uv.  
-Install some packages using uv, like "python-dotenv", "ruff" etc.
+### Exercise #3 - Create a sample project using uv
 
-When we setup a project using `uv init project-name`, directory structure looks like:  
+### Exercise #4 - PEP 8 Style Guide for Python Code
 
-|-- .gitignore
-|-- .python-version
-|-- README.md
-|-- hello.py
-|-- pyproject.toml <-- similar to package.json
-|-- .venv (directory/folder) <-- similar to node_modules folder
-|-- uv.lock <-- similar to package-lock.json
-
-Activate virtual environment by running `.venv\Scripts\activate` from the project directory.  
-
-#4  
-PEP8 coding convention.
-
-#5  
+### Exercise #5 - Processing data from CSV file
 We have stock data file in CSV format.  
 stock_data.csv  
 columns = ticker/symbol, price/ltp, book_value, eps  
@@ -181,28 +162,22 @@ pb_ratio = price / book_value
 Generate a new file with all the columns.
 Do vibe coding.
 
-#6  
-Using with to read/write files.  
+### Exercise #6 - Using `with` to read/write files
 
-#7  
-Casting operations - for example string value to number.  
+### Exercise #7 - Casting in Python
 
-#8  
-Type hinting in Python.  
-Useful in static analysis of the code.  
+### Exercise #8 - Type hinting in Python
 
 #9  
 Create a simple program which calls a function to calculate market cap of a company.  
 Display the output.  
 Market cap = number of outstanding shares X current market price of a share
 
-#N
-Documenting functions in Python.
+### Exercise #10 - Documenting functions in Python
 
-#N
-Commenting in Python.
+### Exercise #11 - Commenting in Python
 
-#10  
+#12  
 Convert the program written in task #5 to OOP style.  
 Do vibe coding.  
 
@@ -214,7 +189,7 @@ Understand code at a higher level and become an orchestrator.
 * Static/Non-static Methods (behaviour)
 * Static/Non-static Properties (state)
 
-#11  
+#13  
 APIs and Decorators  
 
 GitHub Profile Analyser  
@@ -258,7 +233,7 @@ How can decorators help here?
 
 Decorator = Accessory
 
-#12  
+#14  
 Groq LLM
 
 Calling an LLM API
@@ -324,6 +299,9 @@ We will LLM a topic to generate a joke.
 
 Complext tasks -> use Thinking model
 Simple tasks -> use Simple model
+
+#15  
+Study/Explore AI Engineer Job Posts to get idea about the company/employer expectations/job description.  
 
 ---
 
