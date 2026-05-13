@@ -267,8 +267,7 @@ We will LLM a topic to generate a joke.
 Complex tasks -> use Thinking model  
 Simple tasks -> use Simple model  
 
-#15  
-Study/Explore AI Engineer Job Posts to get idea about the company/employer expectations/job description.  
+### Exercise #16 - Study/Explore AI Engineer Job Posts to get idea about the company/employer expectations/job description.
 
 [⬆ Back to Top](#top)
 
