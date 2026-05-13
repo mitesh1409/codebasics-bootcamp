@@ -2,21 +2,20 @@
 
 Mar 8 2026  
 
-Topics
+## Topics
 
-1. Generative AI
-2. AI Agent
-3. Software 1.0 Software 2.0 Software 3.0
-4. Follow Andrej Karpathy
-5. Gen AI (LLM only) Vs AI Agent Vs Agentic AI
-6. What exactly are LLMs?
-7. Transformers
-8. Key Parameters
-9. What Exactly is a Token?
-10. Vector Databases
-
-7. Todos/Exercises
-8. Quizzes
+* [#1 Generative AI](#1-generative-ai)
+* [#2 AI Agent](#2-ai-agent)
+* [#3 Software 1.0 Software 2.0 Software 3.0](#3-software-10-software-20-software-30)
+* [#4 Follow Andrej Karpathy](#4-follow-andrej-karpathy)
+* [#5 Gen AI (LLM only) Vs AI Agent Vs Agentic AI](#5-gen-ai-llm-only-vs-ai-agent-vs-agentic-ai)
+* [#6 What exactly are LLMs?](#6-what-exactly-are-llms)
+* [#7 Transformers](#7-transformers)
+* [#8 Key Parameters](#8-key-parameters)
+* [#9 What Exactly is a Token?](#9-what-exactly-is-a-token)
+* [#10 Vector Databases](#10-vector-databases)
+* [#11 Todos/Exercises](#11-todosexercises)
+* [#12 Quizzes](#12-quizzes)
 
 ---
 
