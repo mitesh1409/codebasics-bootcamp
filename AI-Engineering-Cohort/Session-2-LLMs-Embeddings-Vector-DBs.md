@@ -1,3 +1,5 @@
+<a name="top"></a>
+
 # Session 2: LLMs, Embeddings & Vector DBs
 
 Mar 8 2026  
@@ -37,6 +39,8 @@ LLMs are trained on vast amount of data (source: internet or other?),
 then they do a reinforcement learning with human feedback RLHF.
 
 So as an AI engineer we will build applications that will use LLM as their brain.  
+
+[⬆ Back to Top](#top)
 
 ---
 
@@ -88,11 +92,15 @@ from this and can complete the task.
 
 > An LLM is like a human brain.
 
+[⬆ Back to Top](#top)
+
 ---
 
 ## #3 Software 1.0 Software 2.0 Software 3.0
 
 [Karpathy's 3 Software Paradigms Expanded](https://kanaka.github.io/blog/karpathy-software-paradigms-expanded/)
+
+[⬆ Back to Top](#top)
 
 ---
 
@@ -100,6 +108,8 @@ from this and can complete the task.
 
 * [Andrej Karpathy | YouTube](https://www.youtube.com/@AndrejKarpathy)
 * [Andrej Karpathy | X](https://x.com/karpathy)
+
+[⬆ Back to Top](#top)
 
 ---
 
@@ -112,6 +122,8 @@ Here's the markdown table extracted from the screenshot:
 | **Task Capability** | Answers based on pre-trained knowledge only | Takes input, decides, and completes a task | Handles multi-step goals with planning and coordination |
 | **Tool Usage** | ❌ No external tools | Uses tools to complete a task | Uses multiple tools, may call other agents |
 | **Autonomous Decisions** | ❌ No decision-making | ✅ Makes decisions to complete the task | ✅ Plans, decides, and adapts over time |
+
+[⬆ Back to Top](#top)
 
 ---
 
@@ -161,6 +173,8 @@ etc. (higher probability of getting this)
 > Neural Networks → Deep Learning → Transformers → LLMs
 > LLMs are based on Transformers architecture.
 
+[⬆ Back to Top](#top)
+
 ---
 
 ## #7 Transformers
@@ -179,6 +193,8 @@ it can capture its meaning.
 https://github.com/poloclub/transformer-explainer
 
 https://poloclub.github.io/transformer-explainer/
+
+[⬆ Back to Top](#top)
 
 ---
 
@@ -405,6 +421,8 @@ Important Notes
 - Claude's maximum allowed `max_tokens` depends on the model — for Claude Sonnet 4 it is **8192 tokens**
 - More tokens = **higher API cost**, so set it appropriately for your use case
 
+[⬆ Back to Top](#top)
+
 ---
 
 ## #9 What Exactly is a Token?
@@ -443,6 +461,8 @@ Anthropic has an official tokenizer tool you can use to see exactly how any text
 👉 [https://claude-tokenizer.vercel.app/](https://claude-tokenizer.vercel.app/)
 
 Paste any text there and it will show you the exact token breakdown visually.
+
+[⬆ Back to Top](#top)
 
 ---
 
@@ -485,6 +505,7 @@ id, vector and payload
 References:  
 * [What is a Vector Database?](https://qdrant.tech/articles/what-is-a-vector-database/)
 
+[⬆ Back to Top](#top)
 
 ---
 
@@ -718,6 +739,8 @@ for r in results:
     print(f"ID: {r.id}: {r.payload['text'][:50]}")
 ```
 
+[⬆ Back to Top](#top)
+
 ---
 
 ## #12 Quizzes
@@ -792,7 +815,4 @@ Answer:
 Because embedding models have a maximum input token limit,  
 and smaller chunks capture more focused meaning.
 
----
-
-**inference**  
-An inference is a logical conclusion or "educated guess" made by combining evidence, observations, or clues with your own background knowledge. It is the process of figuring out something that is not directly stated, acting as a bridge between known facts and new understanding.
+[⬆ Back to Top](#top)

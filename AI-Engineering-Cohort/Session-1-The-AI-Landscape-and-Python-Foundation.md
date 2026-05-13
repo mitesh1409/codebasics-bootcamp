@@ -1,6 +1,6 @@
-# Session 1: The AI Landscape and Python Foundation
-
 <a name="top"></a>
+
+# Session 1: The AI Landscape and Python Foundation
 
 Mar 7 2026  
 
