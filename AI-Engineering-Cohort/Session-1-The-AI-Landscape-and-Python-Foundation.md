@@ -203,9 +203,9 @@ Market cap = number of outstanding shares X current market price of a share
 
 ### Exercise #15 - Groq LLM - A simple hands-on
 
-Calling an LLM API
+Calling an LLM API  
 
-Create an account @ https://console.groq.com/home
+Create an account @ https://console.groq.com/home  
 It is free to use, get your API key.
 
 Create .env file and set the following environment variables:
@@ -221,11 +221,11 @@ Install fastapi
 fastapi allows you to write back-end servers in Python.  
 fastapi is like express in Node.js.  
 
-`uv add uvicorn`
+`uv add uvicorn`  
 Also install uvicorn, which automatically reloads the server on file changes.  
 uvicorn is like nodemon in Node.js.  
 
-get_joke.py
+get_joke.py  
 
 ```python
 from fastapi import FastAPI
@@ -262,10 +262,10 @@ All this was done without LLM.
 Now lets use LLM to generate a joke.  
 We will LLM a topic to generate a joke.  
 
-`uv add groq`
+`uv add groq`  
 
-Complext tasks -> use Thinking model
-Simple tasks -> use Simple model
+Complex tasks -> use Thinking model  
+Simple tasks -> use Simple model  
 
 #15  
 Study/Explore AI Engineer Job Posts to get idea about the company/employer expectations/job description.  
