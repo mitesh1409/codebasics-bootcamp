@@ -165,16 +165,21 @@ An extremely fast Python package and project manager, written in Rust.
 ### Exercise #4 - PEP 8 Style Guide for Python Code
 
 ### Exercise #5 - Processing data from CSV file
+
 We have stock data file in CSV format.  
 stock_data.csv  
 columns = ticker/symbol, price/ltp, book_value, eps  
+symbol,ltp,book_value,eps  
+CDSL,1198,93.8,21.8  
+JIOFIN,233,211,2.46  
+BAJAJHFL,85,27,3.07  
 
-Calculate and add two new columns - pe_ratio, pb_ratio
-pe_ratio = price / eps
-pb_ratio = price / book_value
+Calculate and add two new columns - pe_ratio, pb_ratio  
+pe_ratio = price / eps  
+pb_ratio = price / book_value  
 
-Generate a new file with all the columns.
-Do vibe coding.
+Generate a new file with all the columns.  
+Do vibe coding.  
 
 ### Exercise #6 - Using `with` to read/write files
 
@@ -182,73 +187,21 @@ Do vibe coding.
 
 ### Exercise #8 - Type hinting in Python
 
-#9  
-Create a simple program which calls a function to calculate market cap of a company.  
-Display the output.  
+### Exercise #9 - Create a simple program which calls a function to calculate market cap of a company
+
 Market cap = number of outstanding shares X current market price of a share
 
 ### Exercise #10 - Documenting functions in Python
 
 ### Exercise #11 - Commenting in Python
 
-#12  
-Convert the program written in task #5 to OOP style.  
-Do vibe coding.  
+### Exercise #12 - OOP in Python with examples
 
-Understand code at a higher level and become an orchestrator.  
+### Exercise #13 - Develop a simple API in Python to get GitHub profile data for a given username
 
-* Class
-* Constructor
-* Object
-* Static/Non-static Methods (behaviour)
-* Static/Non-static Properties (state)
+### Exercise #14 - Decorators in Python
 
-#13  
-APIs and Decorators  
-
-GitHub Profile Analyser  
-Write code that can analyse a GitHub profile and return a response.
-
-`uv add requests`
-
-"requests" library/package to make API calls.
-
-Decorators in Python  
-Examples with and without decorator.  
-
-```python
-# Write a function to calculate sum of a series of numbers (e.g., 1 to 100_000)
-
-# Function #1: Loop through 1 to 100_000 and do the sum. Calculate execution time.
-# Function #2: Use a formula to do the sum of 1 to 100_000. Calculate execution time.
-
-def sum_with_loop(n):
-  start_time = perf_counter()
-  sum = 0
-  for i in range(100_000):
-    sum += i
-  end_time = perf_counter()
-
-  print(f'Function #1: Loop through the range, execution time {end_time - start_time:.6f} seconds')
-  return sum
-
-def sum_with_formula(n):
-  start_time = perf_counter()
-  sum = n * (n - 1) / 2
-  end_time = perf_counter()
-
-  print(f'Function #2: With formula, execution time {end_time - start_time:.6f} seconds')
-  return sum
-```
-
-Here the code which calculates execution time is getting repeated.  
-
-How can decorators help here?
-
-Decorator = Accessory
-
-#14  
-Groq LLM
+### Exercise #15 - Groq LLM - A simple hands-on
 
 Calling an LLM API
 
