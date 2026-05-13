@@ -1,5 +1,7 @@
 # Session 1: The AI Landscape and Python Foundation
 
+<a name="top"></a>
+
 Mar 7 2026  
 
 ## Topics
@@ -47,6 +49,8 @@ LLMs are based on transformer architecture.
 
 Transformer Architecture is the base of LLMs.
 
+[⬆ Back to Top](#top)
+
 ---
 
 ## #2 Traditional AI Vs Generative/Agentic AI
@@ -66,6 +70,8 @@ Examples:
 
 * LLMs like ChatGPT, Gemini
 * Claude Code
+
+[⬆ Back to Top](#top)
 
 ---
 
@@ -88,11 +94,15 @@ Examples:
     Train a small statistical model
     etc.
 
+[⬆ Back to Top](#top)
+
 ---
 
 ## #4 Study/Explore AI Engineer Job Posts
 
 Study/Explore AI Engineer Job Posts to get idea about the company/employer expectations/job description.  
+
+[⬆ Back to Top](#top)
 
 ---
 
@@ -125,6 +135,8 @@ Posted on X by @naval
 > The hottest new programming language is English
 Posted on X by @karpathy
 
+[⬆ Back to Top](#top)
+
 ---
 
 ## #6 Why Python is Popular in AI World?
@@ -132,6 +144,8 @@ Posted on X by @karpathy
 Python is more English like language.  
 
 [Python Package Index](https://pypi.org/)
+
+[⬆ Back to Top](#top)
 
 ---
 
@@ -303,6 +317,8 @@ Simple tasks -> use Simple model
 #15  
 Study/Explore AI Engineer Job Posts to get idea about the company/employer expectations/job description.  
 
+[⬆ Back to Top](#top)
+
 ---
 
 ## #8 Quizzes
@@ -373,3 +389,5 @@ Why use `load_dotenv()` and `os.getenv('API_KEY')` instead of hardcoding secrets
 
 Answer:  
 It seperates secrets from code, preventing accidental exposure.  
+
+[⬆ Back to Top](#top)
