@@ -2,16 +2,16 @@
 
 Mar 7 2026  
 
-Topics
+## Topics
 
-1. The Entire AI Family Tree
-2. Traditional AI Vs Generative/Agentic AI
-3. AI Engineer Categories
-4. Study/Explore AI Engineer Job Posts
-5. The Mindset Shift
-6. Why Python is Popular in AI World?
-7. Todos/Exercises
-8. Quizzes
+* [#1 The Entire AI Family Tree](#1-the-entire-ai-family-tree)
+* [#2 Traditional AI Vs Generative/Agentic AI](#2-traditional-ai-vs-generativeagentic-ai)
+* [#3 AI Engineer Categories](#3-ai-engineer-categories)
+* [#4 Study/Explore AI Engineer Job Posts](#4-studyexplore-ai-engineer-job-posts)
+* [#5 The Mindset Shift](#5-the-mindset-shift)
+* [#6 Why Python is Popular in AI World?](#6-why-python-is-popular-in-ai-world)
+* [#7 Todos/Exercises](#7-todosexercises)
+* [#8 Quizzes](#8-quizzes)
 
 ---
 
