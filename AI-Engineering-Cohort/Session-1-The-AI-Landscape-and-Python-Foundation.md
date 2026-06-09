@@ -39,14 +39,14 @@ In ML (Machine Learning), there are two sub-domains:
 
 What is available outside ML (Machine Learning) if I want to do AI?
 
-Regular Expressions  
-Rule based programming  
-Robotics  
+* Regular Expressions  
+* Rule based programming  
+* Robotics  
 
 Generative AI and Agentic AI are applications of Transformers.  
 
 LLMs are based on transformer architecture.  
-
+OR  
 Transformer Architecture is the base of LLMs.
 
 [⬆ Back to Top](#top)
@@ -64,11 +64,13 @@ Examples:
 * Image Classification
 * Home Price Prediction
 
-Generative AI/Agentic AI
+Generative AI/Agentic AI  
+It is generative in nature.  
 
 Examples:  
 
-* LLMs like ChatGPT, Gemini
+* ChatGPT
+* Gemini
 * Claude Code
 
 [⬆ Back to Top](#top)
@@ -77,22 +79,22 @@ Examples:
 
 ## #3 AI Engineer Categories
 
-1. Integrator
-    Software Engineer who can integrate AI into existing application.
-    Good front-end + back-end or full-stack knowledge.
-    Integrating AI into current application.
+1. Integrator  
+  * Software Engineer who can integrate AI into existing application.
+  * Good front-end + back-end or full-stack knowledge.
+  * Integrating AI into current application.
 
-2. Builder
-    Who can build LLM models
-    AI Research Engineers
-    Data Scientists
-    Applied Scientists
+2. Builder  
+  * Who can build LLM models
+  * AI Research Engineers
+  * Data Scientists
+  * Applied Scientists
 
-3. All Rounder
-    Combination of #1 and #2, who has overview of both #1 & #2
-    Build Gen AI solution by calling LLM APIs
-    Train a small statistical model
-    etc.
+3. All Rounder  
+  * Combination of #1 and #2, who has overview of both #1 & #2
+  * Build Gen AI solution by calling LLM APIs
+  * Train a small statistical model
+  etc.
 
 [⬆ Back to Top](#top)
 
