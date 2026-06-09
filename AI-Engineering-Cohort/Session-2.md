@@ -29,7 +29,7 @@ such as text, images, audio/video - based on patterns learned from existing data
 ChatGPT -> It is an application that uses LLM GPT-5  
 GPT-5 -> LLM  
 
-Claude -> It is an application that uses LLM Sonnet 4.6
+Claude -> It is an application that uses LLM Sonnet 4.6  
 Sonnet 4.6 -> LLM  
 
 LLM is the brain.  
