@@ -162,7 +162,7 @@ Example #2
 Input:  
 I am feeling hungry, I need...  
 Output:  
-foo  
+food  
 OR  
 something to eat  
 etc. (higher probability of getting this)
