@@ -84,7 +84,7 @@ And it makes the real difference.
 When a user gives instructions like this:  
 > Book a flight for my 7 day trip from New York to New Delhi in May 2026.  
 > The weather should be sunny all day.  
-> My budget is up to 1600$.  
+> My budget is up to $1600.  
 > And no layovers.  
 
 The traditional program won't be able to process this but LLM can extract key information  
