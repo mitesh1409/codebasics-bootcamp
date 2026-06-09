@@ -65,7 +65,7 @@ and they try to accomplish a complex goal by doing a multi-step reasoning and mu
 
 Examples:  
 
-* Flight booking AI agent
+* Flight booking AI agent  
     Tools = AccuWeather API, Expedia platform  
     Knowledge = Database  
     Example Usage:  
@@ -73,7 +73,7 @@ Examples:
     The weather should be sunny all day.  
     My budget is up to 1600$.  
     And no layovers.  
-* Immigration AI agent
+* Immigration AI agent  
     Knowledge = Passport, ID documents, Database etc.  
     Example Usage:  
     Process my VISA.
