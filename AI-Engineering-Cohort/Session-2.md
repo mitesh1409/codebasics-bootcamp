@@ -182,7 +182,7 @@ Reference:
 
 **Word Embeddings**  
 Word Embedding is a way to represent text in numeric format such that  
-it can capture its meaning.  
+it can capture its semantic meaning.  
 
 **Google's Word2Vec**  
 [Google Word2Vec](https://www.kaggle.com/datasets/sugataghosh/google-word2vec)
@@ -473,6 +473,9 @@ When you search
 "Revenue of apple"  
 
 apple word is common but search results are different and relevant.  
+
+Word Embedding is a way to represent text in numeric format such that
+it can capture its semantic meaning.
 
 > Embeddings are used for semantic search
 
