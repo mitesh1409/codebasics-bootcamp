@@ -479,9 +479,9 @@ it can capture its semantic meaning.
 
 > Embeddings are used for semantic search
 
-Word Embedding  
-Sentence Embedding  
-Document Embedding  
+* Word Embedding  
+* Sentence Embedding  
+* Document Embedding  
 
 Embeddings group together similar things.  
 
