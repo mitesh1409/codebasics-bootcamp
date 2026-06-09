@@ -71,7 +71,7 @@ Examples:
     Example Usage:  
     Book a flight for my 7 day trip from New York to New Delhi in May 2026.  
     The weather should be sunny all day.  
-    My budget is up to 1600$.  
+    My budget is up to $1600.  
     And no layovers.  
 * Immigration AI agent  
     Knowledge = Passport, ID documents, Database etc.  
