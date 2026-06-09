@@ -183,6 +183,8 @@ pb_ratio = price / book_value
 Generate a new file with all the columns.  
 Do vibe coding.  
 
+@todo
+
 ### Exercise #6 - Using `with` to read/write files
 
 ### Exercise #7 - Casting in Python
@@ -193,13 +195,19 @@ Do vibe coding.
 
 Market cap = number of outstanding shares X current market price of a share
 
+@todo
+
 ### Exercise #10 - Documenting functions in Python
 
 ### Exercise #11 - Commenting in Python
 
 ### Exercise #12 - OOP in Python with examples
 
+@todo
+
 ### Exercise #13 - Develop a simple API in Python to get GitHub profile data for a given username
+
+@todo
 
 ### Exercise #14 - Decorators in Python
 
@@ -268,6 +276,8 @@ We will LLM a topic to generate a joke.
 
 Complex tasks -> use Thinking model  
 Simple tasks -> use Simple model  
+
+@todo
 
 ### Exercise #16 - Study/Explore AI Engineer Job Posts to get idea about the company/employer expectations/job description.
 
