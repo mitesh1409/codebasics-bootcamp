@@ -437,7 +437,7 @@ Tokenization is based on **subword units**, not whole words. Here's how it actua
 | "internationalization" | ["int", "ern", "ation", "al", "ization"] | 5 tokens |
 | "A cup of coffee" | ["A", "cup", "of", "coff", "ee"] | 5 tokens |
 
-So yes — **long words get split into multiple tokens**, and a token is roughly **3–4 characters** as you suspected.
+**Long words get split into multiple tokens**, and a token is roughly **3–4 characters**.
 
 Simple Rules of Thumb  
 
