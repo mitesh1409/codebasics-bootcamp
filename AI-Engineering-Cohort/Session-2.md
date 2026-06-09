@@ -115,8 +115,6 @@ from this and can complete the task.
 
 ## #5 Gen AI (LLM only) Vs AI Agent Vs Agentic AI
 
-Here's the markdown table extracted from the screenshot:
-
 | System Type | Gen AI (LLM-only) | AI Agent | Agentic AI |
 |---|---|---|---|
 | **Task Capability** | Answers based on pre-trained knowledge only | Takes input, decides, and completes a task | Handles multi-step goals with planning and coordination |
