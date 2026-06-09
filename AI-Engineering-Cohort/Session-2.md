@@ -144,7 +144,7 @@ then they do a reinforcement learning with human feedback RLHF.
 So when you give a sequence of text to an LLM it can predict the next tokens and  
 will ultimately able to complete the sentence meaningfully.  
 
-LLM can process text, image, audio etc. type of data.  
+LLM can process text, image, audio/video etc. type of data.  
 
 Internally LLM uses conditional probability for that.  
 
