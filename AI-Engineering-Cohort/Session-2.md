@@ -205,7 +205,8 @@ Key Parameters
 * Top-p & Top-k
 * Output Length
 
-**Context Window**  
+### Context Window
+
 Maximum number of tokens that can be passed at a time for inference.  
 This will be your working memory.  
 
@@ -227,7 +228,8 @@ teach me a philosophy of non-attachment
 Total number of tokens = 7  
 Context utilized = 7  
 
-**Temperature**  
+### Temperature
+
 Temperature controls how "random" or "creative" the model's output will be.  
 
 The concept of temperature in Physics  
@@ -263,7 +265,7 @@ When to Use What
 - Use **mid temperature** for: chatbots, summarization
 - Use **high temperature** for: brainstorming, creative writing (with caution)
 
-**Top-p (nucleus sampling)**  
+### Top-p (nucleus sampling)
 
 Top-P is another parameter that controls the **randomness of the model's output**, but it works differently from temperature.
 
@@ -291,7 +293,7 @@ Say the next word probabilities are:
 - At **Top-P = 1.0** → model considers **all words** (no filtering)
 - At **Top-P = 0.4** → model only considers {coffee} (very deterministic)
 
-Top-p vs Temperature  
+### Top-p vs Temperature
 
 | | Temperature | Top-p |
 |---|---|---|
@@ -314,7 +316,7 @@ response = client.messages.create(
 
 > **💡 Tip:** Anthropic generally recommends using **either** temperature **or** Top-P, not both together, as combining them can produce unpredictable behavior.
 
-**Top-k**  
+### Top-k
 
 Top-k is similar to Top-p but even simpler — it limits the word pool to a **fixed number of top candidates**, regardless of their probabilities.
 
@@ -340,7 +342,7 @@ Using the same word probabilities:
 - At **K = 1** → model always picks {coffee} — completely deterministic (like greedy decoding)
 - At **K = 5** → model considers all 5 words
 
-Top-k vs Top-p vs Temperature  
+### Top-k vs Top-p vs Temperature
 
 | | Temperature | Top-p | Top-k |
 |---|---|---|---|
@@ -374,7 +376,7 @@ Top-k
 For predictable, structured tasks  
 Examples - Writing Code, Summarization  
 
-**Output Length**  
+### Output Length
 
 Output Length is a parameter, commonly called **`max_tokens`**.
 
