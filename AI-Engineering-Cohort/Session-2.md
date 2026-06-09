@@ -167,8 +167,8 @@ OR
 something to eat  
 etc. (higher probability of getting this)
 
-> LLM is a kind of a neural network.
-> Neural Networks → Deep Learning → Transformers → LLMs
+> LLM is a kind of a neural network.  
+> Neural Networks → Deep Learning → Transformers → LLMs  
 > LLMs are based on Transformers architecture.
 
 [⬆ Back to Top](#top)
