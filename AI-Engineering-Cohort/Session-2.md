@@ -24,13 +24,13 @@ Mar 8 2026
 ## #1 Generative AI
 
 Generative AI is a type of artificial intelligence that creates new content -  
-such as text, images or audio - based on patterns learned from existing data.  
+such as text, images, audio/video - based on patterns learned from existing data.  
 
-ChatGPT -> Application that uses LLM GPT-5
-GPT-5 -> LLM
+ChatGPT -> It is an application that uses LLM GPT-5  
+GPT-5 -> LLM  
 
-Claude -> Application that uses LLM Sonnet 4.6
-Sonnet 4.6 -> LLM
+Claude -> It is an application that uses LLM Sonnet 4.6
+Sonnet 4.6 -> LLM  
 
 LLM is the brain.  
 Application is the body which needs a brain.  
