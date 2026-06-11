@@ -2,7 +2,7 @@
 
 # Session 2: LLMs, Embeddings & Vector DBs
 
-Mar 8 2026  
+Mar 8, 2026  
 
 ## Topics
 
@@ -522,6 +522,7 @@ Quick Start with Qdrant Cloud
 
 https://qdrant.tech/documentation/cloud-quickstart/?_gl=1*1ay4rwq*_gcl_au*MTA3MjQ2NjM4Mi4xNzgxMDEzOTc1LjEyMzU0NDAyODAuMTc4MTAxMzk4MC4xNzgxMDE0NjYz*_ga*MTUyNzA4NjM3MC4xNzgxMDE0MDIw*_ga_PJ90Q60H5P*czE3ODExNTY4NDIkbzQkZzAkdDE3ODExNTY4NDIkajYwJGwwJGgw*_ga_NZYW2651NE*czE3ODExNTY4NDIkbzQkZzAkdDE3ODExNTY4NDIkajYwJGwwJGgw
 
+@todo
 
 #2  
 Qdrant Hands-on

@@ -2,7 +2,7 @@
 
 # Session 1: The AI Landscape and Python Foundation
 
-Mar 7 2026  
+Mar 7, 2026  
 
 ## Topics
 
