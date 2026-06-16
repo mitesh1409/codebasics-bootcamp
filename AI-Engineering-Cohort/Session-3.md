@@ -2,7 +2,7 @@
 
 # Session 3: RAG Fundamentals & Building a RAG Pipeline
 
-Mar 14, 2026  
+Mar 14, 2026
 
 ## Topics
 
@@ -18,7 +18,7 @@ Mar 14, 2026
 
 **The problem it solves**: LLMs have a knowledge cutoff and no access to your private data. RAG bridges that gap.
 
-**The flow in simple terms:**  
+**The flow in simple terms:**
 
 1. User asks a question
 2. System searches a knowledge base for relevant chunks
@@ -71,11 +71,11 @@ Knowledge Base = external or internal, private or public, text, images, pdf, exc
 
 Here in this simple example the knowledge base was small, a URL, but it can be very huge/big such that it cannot be fit into the context window.
 
-Every LLM has a context window limit.  
-Beyond that limit it won't be able to answer the question or do its job.  
+Every LLM has a context window limit.
+Beyond that limit it won't be able to answer the question or do its job.
 
-Vector Databases have the ability to do "Semantic Search".  
-Semantic Search = Searching by meaning, not by matching exact text/keywords  
+Vector Databases have the ability to do "Semantic Search".
+Semantic Search = Searching by meaning, not by matching exact text/keywords
 
 ### Benefits of RAG
 
@@ -114,10 +114,10 @@ Without RAG, an LLM only knows what it was trained on. RAG lets you **plug in yo
 
 ### How LLMs Produce Results in Case of RAG
 
-To produce results LLMs can use:  
+To produce results LLMs can use:
 
-* Context + LLM's own knowledge  
-* Context only  
+* Context + LLM's own knowledge
+* Context only
 
 **Both options are partially correct** — it depends on how you design the prompt.
 
@@ -202,27 +202,27 @@ question       to embedding,        + generates
 
 ## #N Todos/Exercises
 
-@todo  
-Transformers lets you capture the contextual meaning of a word.  
-It uses "attention mechanism".  
+@todo
+Transformers lets you capture the contextual meaning of a word.
+It uses "attention mechanism".
 
 ---
 
-@todo  
-Static Embedding  
-Contextual Embedding  
-Dense numeric presentation/Dense Vectors/Dense Embeddings  
-Sparse numeric presentation  
+@todo
+Static Embedding
+Contextual Embedding
+Dense numeric presentation/Dense Vectors/Dense Embeddings
+Sparse numeric presentation
 
-Word Embedding  
-Sentence Embedding  
-Doc Embedding  
+Word Embedding
+Sentence Embedding
+Doc Embedding
 
 ---
 
 @todo
 
-Explore  
+Explore
 https://colab.research.google.com
 
 https://excalidraw.com
@@ -231,14 +231,14 @@ https://excalidraw.com
 
 @todo
 
-Download and load the Embedding Model.  
+Download and load the Embedding Model.
 
-What is an Embedding Model?  
+What is an Embedding Model?
 It is a model that coverts text (or any other data) to fixed length numerical vectors (1D arrays) that capture the semantic meaning of the input text (or data).
 
 We are going to use the Sentence Transformer library by HuggingFace which allows us to download and use opensource embedding models from HuggingFace.
 
-HuggingFace is like the GitHub of AI, where the AI community collaborates on models, datasets, and applications.  
+HuggingFace is like the GitHub of AI, where the AI community collaborates on models, datasets, and applications.
 
 `pip install -q qdrant-client sentence-transformers`
 
@@ -285,15 +285,15 @@ score_3
 @todo
 
 0 Dimension -> 3.14 -> Scaler
-A single value  
+A single value
 
 1 Dimension -> [1.1, 2.1, 3.1, ...] -> Vector
-A list of values  
+A list of values
 
 2 Dimention -> [[1, 2, 3], -> Matrix
                 [4, 5, 6],
                 [7, 8, 9]]
-A two-dimension array OR an array of arrays  
+A two-dimension array OR an array of arrays
 
 More than 2 Dimension -> Tensor
 
@@ -322,13 +322,13 @@ Traditional Databases - MySQL, PostgreSQL etc.
 
 Lets take a simple example - we have a "books" table.
 
-books table with following fields:  
+books table with following fields:
 - id
 - title
 - category
 - content
 
-Now if we want to search books by a category then we can write a query like:  
+Now if we want to search books by a category then we can write a query like:
 
 ```sql
 SELECT id, title
@@ -336,11 +336,11 @@ FROM books
 WHERE category = 'Health';
 ```
 
-But what if we want to search books that talk about "travelling to other planets".  
+But what if we want to search books that talk about "travelling to other planets".
 
 Here we want to query database using natural language, not by exact category or title or words.
 
-We may try the following query:  
+We may try the following query:
 
 ```sql
 SELECT id, title
@@ -348,14 +348,14 @@ FROM books
 WHERE content LIKE "%travelling to other planets%";
 ```
 
-But the problem is it will do exact text search, it cannot search by meaning or semantic search.  
-Because of this we may not get the desired output.  
+But the problem is it will do exact text search, it cannot search by meaning or semantic search.
+Because of this we may not get the desired output.
 
-This is the problem with traditional databases - they cannot perform semantic search because they are not developed that way. They don't have that feature.  
+This is the problem with traditional databases - they cannot perform semantic search because they are not developed that way. They don't have that feature.
 
 Solution is to use Vector Databases like Qdrant that stores books data into the form of vectors and then we can perform semantic search on it.
 
-So we will have books table:  
+So we will have books table:
 
 - id <-- id of the point
 - vector <-- contains embedded data (word/sentence/doc embeddings)
@@ -585,18 +585,18 @@ r.payload['text'] # original text stored in payload
 
 @todo
 
-Benchmark of Embedding Models.  
+Benchmark of Embedding Models.
 
 https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
 
-HuggingFace > Embedding Leaderboard  
+HuggingFace > Embedding Leaderboard
 https://huggingface.co/spaces/mteb/leaderboard
 
-Which model to use for your project/app?  
-It depends on different factors, cost, the problem you are trying to solve etc.  
-We can ask ChatGPT, Claude, Gemini in selecting the right model.  
+Which model to use for your project/app?
+It depends on different factors, cost, the problem you are trying to solve etc.
+We can ask ChatGPT, Claude, Gemini in selecting the right model.
 
-OpenAI > Vector embeddings  
+OpenAI > Vector embeddings
 https://developers.openai.com/api/docs/guides/embeddings
 
 ---
@@ -613,3 +613,11 @@ This comes here.
 
 RAG Hands-on.
 
+**What is RAG?**
+RAG is the technique of grounding model's responses by letting them retrieve real time data from knowledge bases. It is used to make AI more personalized and reliable.
+
+**Why do we need RAG?**
+> LLMs are frozen in time, since they have a specific knowledge cut-off date.
+
+They know nothing about your private documents/data or anything past their training/knowledge cut-off date.
+RAG (Retrieval Augmented Generation) solves this by giving the model a reference knowledge to consult before answering.
