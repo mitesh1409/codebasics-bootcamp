@@ -91,12 +91,14 @@ Semantic Search = Searching by meaning, not by matching exact text/keywords
 ### Architecture
 
 ```
-Data Sources           Vector DB            LLM
-------------           ---------            ---
-Excel files  --|                            
-PDF files    --|-->    Vector DB    <-->    LLM <-- Question
-SQL DB       --|                             |
-                                             |--> Answer
+
+[Data Sources]
++-------------+            +-----------+             +-------+            [User]
+| Excel files |            |           |             |       |   <-----   Question
+| PDF files   |   ----->   | Vector DB |   <----->   |  LLM  |
+| SQL DB      |            |           |             |       |   ----->   Answer
++-------------+            +-----------+             +-------+
+
 ```
 
 ### How it Works
