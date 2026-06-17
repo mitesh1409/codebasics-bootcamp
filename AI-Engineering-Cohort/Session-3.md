@@ -621,3 +621,390 @@ RAG is the technique of grounding model's responses by letting them retrieve rea
 
 They know nothing about your private documents/data or anything past their training/knowledge cut-off date.
 RAG (Retrieval Augmented Generation) solves this by giving the model a reference knowledge to consult before answering.
+
+**Steps in RAG**
+
+1. Ingestion: Preparing, embedding and storing the data
+2. Retrieval: Finding relevant document to put in context
+3. Generation: Prompting the LLM with retrieved context to generate grounded response
+
+**What we are going to build?**
+
+An HR Policies Chatbot, that can answer about Atliq AI's HR Policies using RAG.
+
+Lets assume we have a company's HR policies document - "Atliq AI HR Policies Document".
+
+---
+
+### Step #1: Ingestion
+
+Ingestion itself involves multiple steps:
+
+1. **Loading** — the documents into a readable format
+2. **Chunking** — splitting them into smaller chunks
+3. **Embedding** — creating their embeddings using the embedding models
+4. **Indexing** — storing the embeddings and payloads on the vector DB
+
+### 1. Ingestion -> Loading
+
+The first step is loading the document so that we can process it.
+
+```python
+# Loading the Document
+import os
+import requests
+
+GITHUB_RAW_URL = "https://raw.githubusercontent.com/tnahddisttud/sample-doc/refs/heads/main/atliqai_hr_policies.txt"
+
+def load_document(url: str) -> str:
+    """Fetch a plain-text file from a raw GitHub URL."""
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    return response.text
+
+raw_text = load_document(GITHUB_RAW_URL)
+print(f"Loaded {len(raw_text):,} characters")
+print(raw_text[:400])  # Sanity check
+```
+
+### What this code does:
+
+| Step | Code | Purpose |
+|---|---|---|
+| 1 | `requests.get(url, timeout=10)` | Fetches the raw file content from GitHub, times out after 10s |
+| 2 | `response.raise_for_status()` | Throws an error if request failed (404, 500, etc.) |
+| 3 | `return response.text` | Returns the file content as a plain string |
+| 4 | `raw_text[:400]` | Prints first 400 characters as a quick sanity check |
+
+> 💡 `raise_for_status()` is a good practice — without it, a failed request (like a typo'd URL) would silently return an error page as text instead of raising an exception.
+
+### 2. Ingestion -> Chunking
+
+It's an essential preprocessing step where we break down large documents into smaller, manageable, and semantically meaningful text segments.
+
+It optimizes RAG by ensuring retrieval accuracy, fitting content into LLM context windows, and reducing retrieval time.
+
+### Flow Summary
+
+| Step | Input | Output |
+|---|---|---|
+| 1. Split | Document | Chunk 1, Chunk 2, Chunk 3 |
+| 2. Embed | Each chunk | Chunk embeddings (vectors) |
+| 3. Store | Chunks (as payload) + embeddings | Vector DB |
+
+Chunking Techniques
+
+* Recursive Text Splitting
+* Hierarchical Chunking
+* Semantic Chunking
+
+Recursive Text Splitting Example
+
+```python
+CHUNK_SIZE = 50
+
+def parse_word_chunks(text: str, chunk_size: int = CHUNK_SIZE) -> list[dict]:
+    # Strip markdown heading symbols and blank lines
+    clean_lines = []
+    for line in text.splitlines():
+        line = line.strip().lstrip("#").strip()
+        if line:
+            clean_lines.append(line)
+
+    # Join everything into one word list and slice
+    words = " ".join(clean_lines).split()
+
+    chunks = []
+    for i in range(0, len(words), chunk_size):
+        content = " ".join(words[i : i + chunk_size])
+        chunks.append({
+            "chunk_index": len(chunks),
+            "content": content,
+        })
+
+    return chunks
+
+chunks = parse_word_chunks(raw_text)
+print(f'Total chunks = {len(chunks)}')
+```
+
+### What this code does:
+
+**Step 1 — Clean the text:**
+```python
+line.strip().lstrip("#").strip()
+```
+- Removes leading/trailing whitespace
+- Strips markdown `#` heading symbols (e.g. `"# Introduction"` → `"Introduction"`)
+- Skips blank lines entirely
+
+**Step 2 — Flatten into words:**
+```python
+words = " ".join(clean_lines).split()
+```
+- Joins all cleaned lines into one string, then splits into a flat list of words
+
+**Step 3 — Chunk by word count:**
+```python
+for i in range(0, len(words), chunk_size):
+    words[i : i + chunk_size]
+```
+- Slides a window of `chunk_size` words (default 50) across the word list
+- Each chunk becomes a dict with `chunk_index` and `content`
+
+### Example Output:
+```python
+[
+    {"chunk_index": 0, "content": "first 50 words..."},
+    {"chunk_index": 1, "content": "next 50 words..."},
+    ...
+]
+```
+
+> 💡 This is **word-count based chunking** — simple and fast, but doesn't respect sentence/paragraph boundaries. More advanced chunking strategies (e.g. semantic chunking, recursive splitting) try to avoid cutting mid-sentence.
+
+> Chunking is also called Text Segmentation
+
+> 50-250 is considered a good chunk size
+
+```python
+def build_chunk_text(chunk: dict) -> str:
+    return chunk["content"]
+```
+
+### Ingestion -> Embedding
+
+```python
+from sentence_transformers import SentenceTransformer
+
+EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+embedder = SentenceTransformer(EMBEDDING_MODEL)
+
+# Extract Chunk Texts
+chunk_texts = [build_chunk_text(c) for c in chunks]
+
+print(f"Embedding {len(chunk_texts)} chunks ...")
+embeddings = embedder.encode(chunk_texts, show_progress_bar=True)
+
+print(f"Shape: {embeddings.shape}")
+```
+
+### Ingestion -> Indexing
+
+Connect to Qdrant cluster and create a collection.
+
+```python
+from qdrant_client import QdrantClient
+from qdrant_client.models import (
+    Distance, VectorParams, PointStruct,
+    Filter, FieldCondition, MatchValue,
+)
+
+# "path" = no server needed for demos
+# Production use: QdrantClient(url="http://localhost:6333")
+client = QdrantClient(path="/tmp/langchain_qdrant")
+
+COLLECTION_NAME = "docs"
+DIM = embedder.get_sentence_embedding_dimension()
+
+client.create_collection(
+    collection_name=COLLECTION_NAME,
+    vectors_config=VectorParams(
+        size=DIM,
+        distance=Distance.COSINE,
+    ),
+)
+print("Collection created.")
+```
+
+Saving embeddings into the collection.
+
+```python
+# Creating Points
+points = [
+    PointStruct(
+        id=idx,
+        vector=embedding.tolist(),
+        payload={
+            "content": chunk["content"],
+        },
+    )
+    for idx, (chunk, embedding) in enumerate(zip(chunks, embeddings))
+]
+
+result = client.upsert(
+    collection_name=COLLECTION_NAME,
+    points=points,
+    wait=True,  # Block until indexing completes before returning
+)
+print(f"Indexed {len(points)} points — status: {result.status}")
+
+info = client.get_collection(COLLECTION_NAME)
+print(f"Points     : {info.points_count}")
+print(f"Dimensions : {info.config.params.vectors.size}")
+```
+
+---
+
+### Step #2: Retrieval
+
+We will retrieve the relevant chunks.
+
+Retrieval is same as a semantic search.
+
+Retrieval has the following steps:
+
+1. Get user query/question
+2. Generate embedding of it
+3. Search into Vector DB using this embedding
+4. Get relative chunks/vectors
+
+```python
+def retrieve(
+    query: str,
+    top_k: int = 5
+) -> list[dict]:
+    """
+    Embed the query and return the top-k most similar chunks.
+
+    Args:
+        query         : User's question.
+        top_k         : Number of chunks to return.
+        section_filter: Optional H2 heading to restrict the search scope.
+    """
+
+    query_vector = embedder.encode(query).tolist()
+
+    hits = client.query_points(
+        collection_name=COLLECTION_NAME,
+        query=query_vector,
+        limit=top_k,
+        with_payload=True,
+    )
+
+    return [{**hit.payload, "score": round(hit.score, 4)} for hit in hits.points]
+
+results = retrieve("What is the leave policy", top_k=3)
+for r in results:
+    print(f"[score={r['score']}]")
+    print(f"  {r['content'][:200]}...\n")
+```
+
+---
+
+### Step #3: Generation
+
+
+---
+
+Ingestion step is the most important and the longest step in RAG pipeline.
+Quality of embedding depends on - chunk size, embedding model etc. factors.
+
+Retrieval step is simple.
+
+---
+
+### RAG Pipeline
+
+1. Ingestion: Preparing, embedding and storing the data
+2. Retrieval: Finding relevant document to put in context
+3. Generation: Prompting the LLM with retrieved context to generate grounded response
+
+
+
+1. Ingestion: Preparing, embedding and storing the data
+2. Retrieval: Finding relevant document to put in context
+3. Generation: Prompting the LLM with retrieved context to generate grounded response
+
+Step #1 Ingestion
+
+Ingestion -> reading data, chunking, embedding and storing into the Vector DB.
+
+Prepares knowledge base into Vector DB. So that we can perform semantic search on it.
+
+1. **Loading** — loading data from the data source - Excel, PDF, SQL Database etc.
+2. **Chunking** — splitting them into smaller chunks
+3. **Embedding** — creating their embeddings using the embedding model
+4. **Indexing** — storing the embeddings and payloads on the vector DB
+
+Step #2 Retrieval
+
+Retrieval -> user query, embedding, searching Vector DB using this embedding and getting relative chunks/vectors.
+
+Semantic search on knowledge base or Vector DB. This context is then passed to LLM to get final response.
+
+1. Get user query/question
+2. Generate embedding of it
+3. Search into Vector DB using this embedding
+4. Get relative chunks/vectors
+
+Step #3 Generation
+
+We pass the following prompt to LLM:
+
+```
+{
+    System Prompt
+        +
+    Question/Query
+        +
+    Context retrieved from the knowledge base (Retrieval step)
+}
+```
+
+```
+SYSTEM_PROMPT = """You are a helpful HR assistant.
+Answer the user's question using ONLY the context provided below.
+If the context does not contain enough information, say so — do not make things up.
+Always cite the section name when referencing specific information."""
+```
+
+```python
+def build_context(retrieved_chunks: list[dict]) -> str:
+    parts = []
+    for i, chunk in enumerate(retrieved_chunks, 1):
+        parts.append(f"[Source {i}]\n{chunk['content']}")
+    return "\n\n---\n\n".join(parts)
+```
+
+```python
+from groq import Groq
+
+groq_client = Groq()  # Reads GROQ_API_KEY from environment automatically
+GROQ_MODEL  = "openai/gpt-oss-safeguard-20b"
+
+def rag(query: str, top_k: int = 5):
+    """
+    End-to-end RAG pipeline:
+      1. Retrieve relevant chunks from Qdrant
+      2. Format them as a context block
+      3. Send context + query to Groq and return the answer
+    """
+
+    # Step 1 — Retrieve
+    chunks = retrieve(query, top_k=top_k)
+    if not chunks:
+        return "No relevant content found in the document."
+
+    # Step 2 — Build context
+    context = build_context(chunks)
+
+    # Step 3 — Generate
+    user_message = f"Context:\n{context}\n\nQuestion: {query}"
+
+    response = groq_client.chat.completions.create(
+        model=GROQ_MODEL,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user",   "content": user_message},
+        ],
+        temperature=0.2,   # Low = factual; High = creative
+    )
+
+    return response.choices[0].message.content, context
+
+answer, context = rag("What are the main topics covered in this document?")
+print(answer)
+print(f"{250*'='}")
+print(f"\n\nSOURCES:\n {context}")
+```
