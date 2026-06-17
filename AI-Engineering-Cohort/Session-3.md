@@ -890,6 +890,9 @@ for r in results:
     print(f"  {r['content'][:200]}...\n")
 ```
 
+The purpose of the Retrieval step is to retrieve relevant chunks/data from the knowledge base.  
+Where knowledge base might have one or multiple databases of different kinds, documents, files etc.  
+
 ---
 
 ### Step #3: Generation
@@ -905,12 +908,6 @@ Retrieval step is simple.
 ---
 
 ### RAG Pipeline
-
-1. Ingestion: Preparing, embedding and storing the data
-2. Retrieval: Finding relevant document to put in context
-3. Generation: Prompting the LLM with retrieved context to generate grounded response
-
-
 
 1. Ingestion: Preparing, embedding and storing the data
 2. Retrieval: Finding relevant document to put in context
@@ -1008,3 +1005,185 @@ print(answer)
 print(f"{250*'='}")
 print(f"\n\nSOURCES:\n {context}")
 ```
+
+---
+
+## #N Quizzes
+
+Quiz #1  
+Traditional DB vs Vector DB  
+
+What is the key difference between a Traditional Database (e.g. MySQL) and a Vector Database (e.g. Qdrant)?  
+
+Answer:  
+Traditional DBs match exact values; Vector DBs match by semantic similarity  
+
+Key Takeaway  
+The fundamental difference isn't speed — it's the **matching mechanism**:
+- **Traditional DBs (MySQL)** → exact value matching (`WHERE id = 5`)
+- **Vector DBs (Qdrant)** → semantic similarity matching (finds conceptually similar items, even with different exact wording)
+
+---
+
+Quiz #2  
+RAG Acronym  
+
+Which of the following is the correct definition of the acronym RAG?  
+
+Answer:  
+- Randomly Asking Google
+- Recursive Attention Gateway
+- Response-Aligned Grounding
+- **Retrieval-Augmented Generation** ✅
+
+Key Takeaway  
+**RAG = Retrieval-Augmented Generation** — the LLM's generation is "augmented" with content retrieved from an external knowledge source (like a vector database) before producing an answer.
+
+---
+
+Quiz #3  
+Dense Numerical Representation in RAG  
+
+In a RAG pipeline, what do we call the dense numerical representation that captures a text's meaning relative to its surrounding context?
+
+Answer:  
+- **A contextual embedding** ✅
+- A semantic hash
+- A digital horoscope for words
+- A token index
+
+Right Answer: A contextual embedding - why?  
+A **contextual embedding** is a dense vector representation of text where the meaning is captured **relative to the surrounding context** — this is exactly what we've covered earlier (e.g. `model.encode()` converting text into a vector that captures semantic meaning).
+
+---
+
+Quiz #4  
+Primary Problem RAG Solves  
+
+What is the primary problem that RAG aims to solve in Large Language Models?  
+
+Answer:  
+RAG primarily solves the problem of LLMs being limited to their **static, pre-trained knowledge** — they can't access up-to-date, private, or domain-specific information, and tend to **hallucinate** when asked about things outside their training data. RAG fixes this by retrieving relevant external context at query time and grounding the LLM's answer in that real data.
+
+---
+
+Quiz #5  
+Why Chunk Large Documents for RAG  
+
+Why do we typically "chunk" large documents (like a 100-page PDF) before storing them for RAG?  
+
+Answer:  
+Chunking large documents serves multiple purposes:  
+- **Fits content into LLM context windows** — a 100-page PDF as one block would exceed the model's input limit
+- **Improves retrieval accuracy** — smaller, semantically focused chunks let the vector search return precisely relevant sections instead of vague whole-document matches
+- **Reduces retrieval time** — searching/embedding smaller units is faster and more efficient
+
+---
+
+Quiz #6  
+Role of Vector Database in RAG  
+
+What role does the Vector Database (like Qdrant) play in RAG?  
+
+Answer:  
+The Vector Database stores the **embeddings (vectors) and payloads** of document chunks, and enables **fast semantic similarity search** — when a user asks a question, the query is embedded and the Vector DB retrieves the most relevant chunks to pass to the LLM as context.
+
+---
+
+Quiz #7  
+How Vector DB Determines Relevant Chunks  
+
+In a RAG system, how does the vector database determine which stored chunks are most relevant to a user's query?  
+
+Answer:  
+The query is converted into an embedding (vector), and the vector database compares this query vector against all stored chunk vectors using a **similarity metric** (commonly **cosine similarity**). The chunks with the highest similarity scores are returned as the most relevant results.
+
+---
+
+Quiz #8  
+What Happens After Retriever Finds Chunks  
+
+What happens immediately after the Retriever finds the most relevant document chunks?  
+
+Answer:  
+Immediately after retrieval, the chunks are **formatted into a context block** and then **combined with the user's query** to form the prompt — this combined prompt (System Prompt + User's Query/Question + Context retrieved from the knowledge base) is sent to the LLM to generate the final answer.
+
+```
+Retrieve chunks → Build context → Send (system prompt + query + context) to LLM → Generate answer
+```
+
+---
+
+Quiz #9  
+Role of an Embedding Model in RAG  
+
+In a RAG application, what is the role of an Embedding Model?  
+
+Answer:  
+The Embedding Model converts text (documents, chunks, or the user's query) into **dense numerical vectors** that capture semantic meaning. This allows the system to compare text mathematically — measuring similarity between the query and stored chunks — rather than relying on exact keyword matching.
+
+```
+Text  →  Embedding Model  →  Vector (e.g. [0.2, -0.5, 0.8, ...])
+```
+
+---
+
+Quiz #10  
+Well-Prompted RAG Agent with No Answer in Context  
+
+If a user asks a question, but the retrieved documents do not contain the answer, what should a well-prompted RAG agent do?  
+
+Answer:  
+A well-prompted RAG agent should **honestly state that the context does not contain enough information to answer the question**, rather than guessing or making something up. This directly matches the instruction from earlier: *"If the context does not contain enough information, say so — do not make things up."*
+
+This is the core defense against **hallucination** in RAG systems.
+
+---
+
+## #N How does search work in Vector DB?
+
+Suppose there are 1-10 million vectors in the Vector DB.  
+
+Now performing search operation on it - consine similarity search.  
+
+How do they do it efficiently?  
+
+HNSW - Highly Navigable Small World  
+This algorithm is used for efficient search and retrieval.  
+
+---
+
+## #N How to handle updates in the knowledge base?
+
+Initially we started with v1 of the document, chunked, embedded and stored in Vector DB.  
+
+Later on we got v2 of the document with some updates.  
+How do we handle it?  
+
+We can filter the chunks that needs to be updated using meta-data filtering.  
+That way we can identify and update the required chunks.  
+
+---
+
+## #N RAG and the security of the data
+
+Scenario: We have a confidential IP protected data, passing it to LLM as part of RAG pipeline,  
+would LLM retrain and use it for other work?  
+
+Cloud providers will provide you this protected private environment.  
+So your data will be protected.  
+
+Some clients don't trust this cloud providers - Microsoft Azure, AWS etc.  
+
+It is possible to host LLM on your own server.  
+We can host LLM on a server which is located in the same country.  
+So data won't leave outside the country.  
+Also since LLM is hosted on a server, it has no connection to the outside world, it cannot be retrained.  
+
+---
+
+## #N What size is good for chunking? Which is better big chunks or small chunks?
+
+Smaller chunks are better as they:  
+- retrieval accuracy -> we get better results from LLM
+- cost effective as they consume less number of tokens
