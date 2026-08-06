@@ -1,2 +1,0 @@
-class ItemAlreadyReturned(Exception):
-    pass

@@ -1,2 +1,0 @@
-class ItemAlreadyBorrowed(Exception):
-    pass
